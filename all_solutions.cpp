@@ -24,6 +24,16 @@ bool possible(int row, int col, int num) {
 	return true;
 }
 
+void displayGrid(int grid[9][9]) {
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			std::cout << grid[i][j] << " ";
+		}
+		std::cout << '\n';
+	}
+	std::cout << '\n';
+}
+
 bool solve() {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
@@ -31,6 +41,7 @@ bool solve() {
 				for (int n = 1; n < 10; n++) {
 					if (possible(i, j, n)) {
 						grid[i][j] = n;
+						displayGrid(grid);
 						solve();
 						grid[i][j] = 0;
 					}
@@ -39,12 +50,7 @@ bool solve() {
 			}
 		}
 	}
-	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 9; j++) {
-			std::cout << grid[i][j] << " ";
-		}
-		std::cout << '\n';
-	}
+	displayGrid(grid);
 
 	std::cout << '\n';
 	std::cout << "try for next solution?\n";
