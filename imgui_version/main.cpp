@@ -60,7 +60,8 @@ bool possible(int row, int col, int num, int (&puzzle)[9][9]) {
 }
 
 /*solves the puzzle*/
-/*we don't really need this function since gen_sudoku generates a filled valid puzzle meaning we already have the solution*/
+/*we don't really need this function since gen_sudoku generates a solved and valid puzzle meaning we already have the solution. 
+I decided to include it because its part of the assignment*/
 bool solve(int (&puzzle)[9][9]) {
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
@@ -81,14 +82,14 @@ bool solve(int (&puzzle)[9][9]) {
 	return true;
 }
 
-/*usefull function to shuffle an array*/
+/*function to shuffle an array*/
 void randSort(std::array<int, 9>& arr) {
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::shuffle(arr.begin(), arr.end(), gen);
 }
 
-/*generate sudoky puzzles*/
+/*generate sudoku puzzles*/
 bool gen_sudoku(int (&puzzle)[9][9]) {
 	std::array<int, 9> rArr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
